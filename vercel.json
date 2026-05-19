@@ -1,0 +1,26 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install --legacy-peer-deps",
+  "regions": ["iad1"],
+  "env": {
+    "NEXT_PUBLIC_CHAIN_ID": "421614",
+    "NEXT_PUBLIC_RPC_URL": "https://sepolia-rollup.arbitrum.io/rpc",
+    "PINATA_GATEWAY_URL": "https://gateway.pinata.cloud",
+    "REVENUE_CAP_USD": "20",
+    "PLATFORM_FEE_PERCENTAGE": "10",
+    "ETH_USD_FALLBACK": "3000",
+    "ALLOW_MOCK_PAYMENT": "false"
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ]
+}
