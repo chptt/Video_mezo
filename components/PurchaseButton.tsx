@@ -52,19 +52,28 @@ export default function PurchaseButton({
       setStep("pending");
       toast.loading("Waiting for transaction confirmation...", { id: "purchase" });
 
-      const tx = await contract.purchaseAccess(campaignId, { value: priceWei });
+      // Convert priceWei to string for ethers v6 compatibility
+      // Set explicit gasLimit to bypass estimation failures on Arbitrum
+      const tx = await contract.purchaseAccess(campaignId, {
+        value: priceWei.toString(),
+        gasLimit: 300000,
+      });
       const receipt = await tx.wait();
 
       toast.success("Access purchased! Enjoy your content.", { id: "purchase" });
       setStep("done");
       onSuccess?.(receipt.hash);
     } catch (err: unknown) {
-      const e = err as { code?: number; message?: string };
+      const e = err as { code?: number; message?: string; reason?: string };
       toast.dismiss("purchase");
       if (e.code === 4001 || e.message?.includes("user rejected")) {
         toast.error("Transaction cancelled");
+      } else if (e.reason) {
+        toast.error(`Purchase failed: ${e.reason}`);
+      } else if (e.message?.includes("insufficient funds")) {
+        toast.error("Insufficient ETH balance to purchase");
       } else {
-        toast.error("Purchase failed. Please try again.");
+        toast.error("Purchase failed — check you have enough ETH and are on Arbitrum Sepolia");
         console.error(err);
       }
       setStep("idle");
