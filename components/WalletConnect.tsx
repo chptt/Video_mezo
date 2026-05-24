@@ -30,8 +30,9 @@ export function useWallet() {
   const REQUIRED_CHAIN = 421614;
 
   useEffect(() => {
-    // Restore session
-    if (typeof window !== "undefined" && window.ethereum) {
+    // Restore session only if user hasn't manually disconnected
+    const wasDisconnected = sessionStorage.getItem("ps_disconnected") === "true";
+    if (typeof window !== "undefined" && window.ethereum && !wasDisconnected) {
       window.ethereum
         .request({ method: "eth_accounts" })
         .then((accounts) => {
@@ -44,7 +45,9 @@ export function useWallet() {
         .request({ method: "eth_chainId" })
         .then((id) => setChainId(parseInt(id as string, 16)))
         .catch(() => {});
+    }
 
+    if (typeof window !== "undefined" && window.ethereum) {
       const handleAccountsChanged = (accounts: unknown) => {
         const accs = accounts as string[];
         setAddress(accs.length > 0 ? accs[0] : null);
@@ -68,6 +71,8 @@ export function useWallet() {
       return;
     }
     setLoading(true);
+    // Clear the disconnected flag so session restores on next reload
+    sessionStorage.removeItem("ps_disconnected");
     try {
       const accounts = await window.ethereum.request({
         method: "eth_requestAccounts",
@@ -124,7 +129,11 @@ export function useWallet() {
   };
 
   const disconnect = () => {
+    // MetaMask does not expose a programmatic disconnect API.
+    // We clear local state and set a flag so the app won't auto-reconnect on reload.
     setAddress(null);
+    setChainId(null);
+    sessionStorage.setItem("ps_disconnected", "true");
     toast.success("Wallet disconnected");
   };
 
