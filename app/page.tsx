@@ -21,9 +21,9 @@ const features = [
   },
   {
     icon: Zap,
-    title: "Arbitrum Sepolia",
+    title: "Mezo Testnet",
     description:
-      "Low-cost, fast transactions on Arbitrum L2. Automatic 90/10 payment split on-chain.",
+      "Low-cost, fast transactions on Mezo. Automatic 90/10 payment split on-chain.",
     color: "from-yellow-500 to-orange-500",
   },
   {
