@@ -53,8 +53,8 @@ export const CONTRACT_ABI = [
   // Read
   "function getCampaign(uint256 campaignId) view returns (tuple(uint256 id, address creator, string metadataCID, uint256 priceWei, uint256 durationSeconds, uint256 totalRevenueWei, bool active, bool soldOut))",
   "function hasAccess(uint256 campaignId, address buyer) view returns (bool valid, uint256 expiresAt)",
-  "function hasCampaign(address) view returns (bool)",
-  "function creatorCampaignId(address) view returns (uint256)",
+  "function getCreatorCampaignIds(address creator) view returns (uint256[])",
+  "function getCreatorCampaignCount(address creator) view returns (uint256)",
   "function totalCampaigns() view returns (uint256)",
   "function revenueCapWei() view returns (uint256)",
   "function platformFeeBps() view returns (uint256)",

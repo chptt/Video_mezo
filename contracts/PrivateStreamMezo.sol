@@ -39,8 +39,7 @@ contract PrivateStreamMezo {
     uint256 private _nextId;
 
     mapping(uint256 => Campaign)                    public campaigns;
-    mapping(address => bool)                        public hasCampaign;
-    mapping(address => uint256)                     public creatorCampaignId;
+    mapping(address => uint256[])                   public creatorCampaignIds;
     mapping(uint256 => mapping(address => uint256)) public accessExpiry;
 
     event CampaignCreated(
@@ -83,7 +82,6 @@ contract PrivateStreamMezo {
         uint256 priceWei,
         uint256 durationSeconds
     ) external returns (uint256 id) {
-        require(!hasCampaign[msg.sender], "Already own a campaign");
         require(bytes(metadataCID).length > 0, "Empty CID");
         require(priceWei > 0, "Price must be > 0");
         require(durationSeconds > 0, "Duration must be > 0");
@@ -99,8 +97,7 @@ contract PrivateStreamMezo {
             true,
             false
         );
-        hasCampaign[msg.sender]       = true;
-        creatorCampaignId[msg.sender] = id;
+        creatorCampaignIds[msg.sender].push(id);
 
         emit CampaignCreated(id, msg.sender, metadataCID, priceWei, durationSeconds);
     }
@@ -162,9 +159,14 @@ contract PrivateStreamMezo {
         valid     = expiresAt > block.timestamp;
     }
 
-    /** @notice Get the campaign ID owned by a creator (0 if none) */
-    function getCampaignByCreator(address creator) external view returns (uint256) {
-        return creatorCampaignId[creator];
+    /** @notice Get all campaign IDs owned by a creator */
+    function getCreatorCampaignIds(address creator) external view returns (uint256[] memory) {
+        return creatorCampaignIds[creator];
+    }
+
+    /** @notice Get the number of campaigns owned by a creator */
+    function getCreatorCampaignCount(address creator) external view returns (uint256) {
+        return creatorCampaignIds[creator].length;
     }
 
     /** @notice Total number of campaigns ever created */

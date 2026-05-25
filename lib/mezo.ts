@@ -79,22 +79,23 @@ export async function getTotalCampaigns(): Promise<number> {
   }
 }
 
-/** Check if an address already has a campaign */
-export async function checkHasCampaign(address: string): Promise<boolean> {
+/** Get all campaign IDs owned by a creator */
+export async function getCreatorCampaignIds(address: string): Promise<number[]> {
   try {
     const contract = getContract();
-    return await contract.hasCampaign(address);
+    const ids = await contract.getCreatorCampaignIds(address);
+    return ids.map((id: bigint) => Number(id));
   } catch {
-    return false;
+    return [];
   }
 }
 
-/** Get campaign ID owned by a creator */
-export async function getCreatorCampaignId(address: string): Promise<number> {
+/** Get number of campaigns owned by a creator */
+export async function getCreatorCampaignCount(address: string): Promise<number> {
   try {
     const contract = getContract();
-    const id = await contract.creatorCampaignId(address);
-    return Number(id);
+    const count = await contract.getCreatorCampaignCount(address);
+    return Number(count);
   } catch {
     return 0;
   }
