@@ -6,7 +6,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "PrivateStream Mezo — Encrypted Video Access on Mezo",
   description:
-    "Privacy-preserving encrypted video access platform on Mezo Testnet.",
+    "Privacy-preserving encrypted video access platform on Mezo Testnet - updated 2026.",
   keywords: ["Mezo", "encrypted video", "Web3", "privacy", "blockchain"],
 };
 
