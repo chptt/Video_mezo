@@ -32,6 +32,17 @@ export function useWallet() {
   useEffect(() => {
     // Restore session only if user hasn't manually disconnected
     const wasDisconnected = sessionStorage.getItem("ps_disconnected") === "true";
+    const checkChain = async () => {
+      if (typeof window !== "undefined" && window.ethereum) {
+        try {
+          const id = await window.ethereum.request({ method: "eth_chainId" });
+          const parsedId = parseInt(id as string, 16);
+          console.log("Current chain ID:", parsedId);
+          setChainId(parsedId);
+        } catch {}
+      }
+    };
+
     if (typeof window !== "undefined" && window.ethereum && !wasDisconnected) {
       window.ethereum
         .request({ method: "eth_accounts" })
@@ -41,10 +52,7 @@ export function useWallet() {
         })
         .catch(() => {});
 
-      window.ethereum
-        .request({ method: "eth_chainId" })
-        .then((id) => setChainId(parseInt(id as string, 16)))
-        .catch(() => {});
+      checkChain();
     }
 
     if (typeof window !== "undefined" && window.ethereum) {
@@ -53,12 +61,19 @@ export function useWallet() {
         setAddress(accs.length > 0 ? accs[0] : null);
       };
       const handleChainChanged = (id: unknown) => {
-        setChainId(parseInt(id as string, 16));
+        const parsedId = parseInt(id as string, 16);
+        console.log("Chain changed to:", parsedId);
+        setChainId(parsedId);
       };
 
       window.ethereum.on("accountsChanged", handleAccountsChanged);
       window.ethereum.on("chainChanged", handleChainChanged);
+      
+      // Poll chain ID every 2 seconds to make sure we have the latest
+      const interval = setInterval(checkChain, 2000);
+      
       return () => {
+        clearInterval(interval);
         window.ethereum?.removeListener("accountsChanged", handleAccountsChanged);
         window.ethereum?.removeListener("chainChanged", handleChainChanged);
       };
