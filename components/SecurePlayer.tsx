@@ -26,7 +26,7 @@ export default function SecurePlayer({ embedUrl, title, className }: SecurePlaye
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2 text-xs text-emerald-400">
           <Shield className="w-3.5 h-3.5" />
-          <span>Encrypted access · Wallet-gated · FHE-protected</span>
+          <span>Encrypted access · Wallet-gated · Privacy-protected</span>
         </div>
         <button
           onClick={handleFullscreen}

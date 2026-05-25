@@ -2,10 +2,8 @@
  * lib/access.ts
  * Access control logic — verifies wallet ownership and on-chain access expiry.
  *
- * FHE-Inspired Architecture Note:
- * In a full FHE deployment, access permissions would be stored as encrypted
- * ciphertexts on-chain, and verification would happen inside an encrypted
- * execution environment. This MVP simulates that pattern using:
+ * Privacy-First Architecture Note:
+ * This MVP simulates privacy-preserving access control using:
  *   - On-chain access expiry timestamps
  *   - Server-side verification before decryption
  *   - Wallet-gated decryption (only the buyer's address can request decryption)

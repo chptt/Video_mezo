@@ -1,0 +1,537 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_treasury",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_feeBps",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_revenueCapWei",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "buyer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "expiresAt",
+						"type": "uint256"
+					}
+				],
+				"name": "AccessPurchased",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "creator",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "cid",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "duration",
+						"type": "uint256"
+					}
+				],
+				"name": "CampaignCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					}
+				],
+				"name": "CampaignDeactivated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "total",
+						"type": "uint256"
+					}
+				],
+				"name": "RevenueCapReached",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "accessExpiry",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "campaigns",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "creator",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "metadataCID",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "priceWei",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "durationSeconds",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalRevenueWei",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "active",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "soldOut",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "metadataCID",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "priceWei",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "durationSeconds",
+						"type": "uint256"
+					}
+				],
+				"name": "createCampaign",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "creatorCampaignId",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					}
+				],
+				"name": "deactivateCampaign",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					}
+				],
+				"name": "getCampaign",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "creator",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "metadataCID",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "priceWei",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "durationSeconds",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalRevenueWei",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "active",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "soldOut",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct PrivateStreamMezo.Campaign",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "creator",
+						"type": "address"
+					}
+				],
+				"name": "getCampaignByCreator",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "buyer",
+						"type": "address"
+					}
+				],
+				"name": "hasAccess",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "valid",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "expiresAt",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "hasCampaign",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "platformFeeBps",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "platformTreasury",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					}
+				],
+				"name": "purchaseAccess",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "revenueCapWei",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalCampaigns",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Mezo is a Bitcoin-first EVM-compatible chain where BTC is the native      gas token (18 decimals). This contract is identical in logic to the      Arbitrum version but is deployed on Mezo Testnet (chainId 31611) or      Mezo Mainnet (chainId 31612).      Deploy via Remix:        1. Set compiler to 0.8.24, enable optimizer (200 runs)        2. In \"Deploy & Run\", select \"Injected Provider - MetaMask\"        3. Make sure MetaMask is on Mezo Testnet (chainId 31611)        4. Constructor args:             _treasury  = your treasury wallet address             _feeBps    = 1000  (= 10%)             _revenueCapWei = revenue cap in wei (BTC, 18 decimals)                             e.g. for $20 cap at $100,000/BTC:                             0.0002 BTC = 200000000000000 wei",
+			"kind": "dev",
+			"methods": {
+				"createCampaign(string,uint256,uint256)": {
+					"params": {
+						"durationSeconds": "How long access lasts after purchase",
+						"metadataCID": "IPFS CID of the encrypted metadata JSON",
+						"priceWei": "Access price in wei (BTC, 18 decimals)"
+					}
+				},
+				"purchaseAccess(uint256)": {
+					"params": {
+						"id": "Campaign ID"
+					}
+				}
+			},
+			"title": "PrivateStreamMezo",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"createCampaign(string,uint256,uint256)": {
+					"notice": "Create a new campaign. One campaign per wallet."
+				},
+				"deactivateCampaign(uint256)": {
+					"notice": "Creator can deactivate their own campaign "
+				},
+				"getCampaign(uint256)": {
+					"notice": "Get full campaign data "
+				},
+				"getCampaignByCreator(address)": {
+					"notice": "Get the campaign ID owned by a creator (0 if none) "
+				},
+				"hasAccess(uint256,address)": {
+					"notice": "Check if a buyer has valid, unexpired access "
+				},
+				"purchaseAccess(uint256)": {
+					"notice": "Purchase access to a campaign. Send exactly priceWei BTC."
+				},
+				"totalCampaigns()": {
+					"notice": "Total number of campaigns ever created "
+				}
+			},
+			"notice": "Privacy-preserving encrypted video access platform on Mezo.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"PrivateStreamMezo.sol": "PrivateStreamMezo"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"PrivateStreamMezo.sol": {
+			"keccak256": "0x35e29c9501ea4f381c4bca0e834a43dfebf85dce191ed2caedf4dbab7166ceaa",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6305381b62c93003ab30c44d84dfcf785979eb8d074f315d6538b9c25fa9c1d7",
+				"dweb:/ipfs/QmWmWPjmS1WooRJG2GCzbbzaotKWt6zWsgseGgUhSJyduZ"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,14 +1,11 @@
 /**
  * lib/encryption.ts
  *
- * AES-256-GCM encryption utilities for PrivateStream FHE.
+ * AES-256-GCM encryption utilities for PrivateStream Mezo.
  *
- * FHE-Inspired Architecture Note:
+ * Privacy-First Architecture Note:
  * ─────────────────────────────────────────────────────────────────────────────
- * This module simulates privacy-preserving encrypted metadata storage.
- * In a full FHE deployment (Fhenix / Zama), these operations would be
- * performed inside an encrypted execution environment where even the
- * server cannot observe plaintext values.
+ * This module provides privacy-preserving encrypted metadata storage.
  *
  * Current implementation:
  *   - AES-256-GCM with random IV per encryption

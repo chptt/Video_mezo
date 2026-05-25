@@ -6,8 +6,8 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "PrivateStream Mezo — Encrypted Video Access on Mezo",
   description:
-    "Privacy-preserving encrypted video access platform using FHE-inspired architecture on Mezo Testnet.",
-  keywords: ["FHE", "Mezo", "encrypted video", "Web3", "privacy", "blockchain"],
+    "Privacy-preserving encrypted video access platform on Mezo Testnet.",
+  keywords: ["Mezo", "encrypted video", "Web3", "privacy", "blockchain"],
 };
 
 export default function RootLayout({

@@ -29,7 +29,7 @@ export default function Navbar() {
               <Shield className="w-4 h-4 text-white" />
             </div>
             <span className="font-bold text-sm bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-              PrivateStream FHE
+              PrivateStream Mezo
             </span>
           </Link>
 

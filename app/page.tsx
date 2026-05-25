@@ -48,7 +48,7 @@ export default function HomePage() {
           className="mb-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-medium"
         >
           <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-          Live on Arbitrum Sepolia · FHE-Inspired Architecture
+          Live on Mezo Testnet · Privacy-First Architecture
         </motion.div>
 
         {/* Headline */}
@@ -60,7 +60,7 @@ export default function HomePage() {
         >
           <span className="gradient-text">PrivateStream</span>
           <br />
-          <span className="text-white">FHE</span>
+          <span className="text-white">Mezo</span>
         </motion.h1>
 
         <motion.p
@@ -145,7 +145,7 @@ export default function HomePage() {
           ))}
         </div>
 
-        {/* FHE note */}
+        {/* Privacy architecture note */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -153,12 +153,11 @@ export default function HomePage() {
           className="mt-10 p-6 rounded-2xl bg-purple-500/5 border border-purple-500/20 text-center"
         >
           <p className="text-sm text-purple-300 font-medium mb-1">
-            🔬 FHE Architecture Note
+            🔬 Privacy Architecture Note
           </p>
           <p className="text-xs text-gray-500 max-w-2xl mx-auto">
-            This MVP demonstrates FHE-inspired encrypted access control on Arbitrum.
-            The architecture is designed for future migration to Fhenix / Zama FHE rollups
-            where all computation happens inside an encrypted execution environment.
+            This MVP demonstrates encrypted access control on Mezo.
+            The architecture is designed for privacy-first video access with wallet-gated decryption.
           </p>
         </motion.div>
       </section>

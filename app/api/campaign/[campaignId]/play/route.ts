@@ -6,12 +6,8 @@
  *   1. Wallet address is valid
  *   2. On-chain access is valid and not expired
  *
- * FHE-Inspired Architecture Note:
- * In a full FHE deployment, this decryption would happen inside an
- * encrypted execution environment. The server would never see the
- * plaintext video URL — only the buyer's encrypted access token
- * would unlock the content. This MVP simulates that pattern using
- * server-side AES-256-GCM decryption gated by on-chain access checks.
+ * Privacy-First Architecture Note:
+ * This MVP uses server-side AES-256-GCM decryption gated by on-chain access checks.
  */
 
 import { NextRequest, NextResponse } from "next/server";
