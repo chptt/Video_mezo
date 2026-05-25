@@ -87,8 +87,8 @@ export function useWallet() {
             chainId: "0x7B5B",
             chainName: "Mezo Testnet",
             nativeCurrency: { name: "Bitcoin", symbol: "BTC", decimals: 18 },
-            rpcUrls: ["https://rpc.mezzo.xyz"],
-            blockExplorerUrls: ["https://explorer.mezzo.xyz"],
+            rpcUrls: ["https://rpc.test.mezo.org"],
+            blockExplorerUrls: ["https://explorer.test.mezo.org"],
           }],
         });
       } catch {
@@ -146,8 +146,8 @@ export function useWallet() {
           chainId: "0x7B5B",
           chainName: "Mezo Testnet",
           nativeCurrency: { name: "Bitcoin", symbol: "BTC", decimals: 18 },
-          rpcUrls: ["https://rpc.mezzo.xyz"],
-          blockExplorerUrls: ["https://explorer.mezzo.xyz"],
+          rpcUrls: ["https://rpc.test.mezo.org"],
+            blockExplorerUrls: ["https://explorer.test.mezo.org"],
         }],
       });
       await window.ethereum.request({
@@ -233,7 +233,7 @@ export default function WalletConnect({ className, compact = false }: WalletConn
           {copied ? <CheckCheck className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
         </button>
         <a
-          href={`https://explorer.mezzo.xyz/address/${address}`}
+          href={`https://explorer.test.mezo.org/address/${address}`}
           target="_blank"
           rel="noopener noreferrer"
           className="p-1 hover:text-cyan-400 transition-colors text-gray-500"

@@ -5,7 +5,7 @@ import * as dotenv from "dotenv";
 dotenv.config({ path: ".env.local" });
 
 const DEPLOYER_PRIVATE_KEY = process.env.DEPLOYER_PRIVATE_KEY || "";
-const RPC_URL = process.env.NEXT_PUBLIC_RPC_URL || "https://rpc.mezzo.xyz";
+const RPC_URL = process.env.NEXT_PUBLIC_RPC_URL || "https://rpc.test.mezo.org";
 
 const config: HardhatUserConfig = {
   solidity: {

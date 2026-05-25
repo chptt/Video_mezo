@@ -11,7 +11,7 @@ export const APP_DESCRIPTION =
 export const CHAIN_ID = Number(process.env.NEXT_PUBLIC_CHAIN_ID) || 31611;
 export const RPC_URL =
   process.env.NEXT_PUBLIC_RPC_URL ||
-  "https://rpc.mezzo.xyz";
+  "https://rpc.test.mezo.org";
 export const CONTRACT_ADDRESS =
   process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || "";
 
@@ -42,7 +42,7 @@ export const MEZO_TESTNET = {
   blockExplorers: {
     default: {
       name: "Mezo Explorer",
-      url: "https://explorer.mezzo.xyz",
+      url: "https://explorer.test.mezo.org",
     },
   },
   testnet: true,
