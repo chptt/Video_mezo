@@ -1,21 +1,16 @@
-# PrivateStream FHE
+# PrivateStream Mezo
 
-> Privacy-preserving encrypted video access platform on Arbitrum using FHE-inspired architecture.
+> Privacy-preserving encrypted video access platform on Mezo.
 
 [![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org)
-[![Arbitrum](https://img.shields.io/badge/Arbitrum-Sepolia-blue)](https://arbitrum.io)
+[![Mezo](https://img.shields.io/badge/Mezo-Testnet-blue)](https://mezzo.xyz)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 ---
 
-## FHE Architecture Note
+## Privacy-First Architecture Note
 
-> **This MVP demonstrates FHE-inspired encrypted access control architecture on Arbitrum.**
-
-Designed for future migration to:
-- [Fhenix](https://www.fhenix.io/) — FHE-enabled EVM chain
-- [Zama](https://www.zama.ai/) — fhEVM for encrypted smart contracts
-- Arbitrum FHE rollups — future encrypted execution layers
+> **This MVP demonstrates encrypted access control architecture on Mezo.**
 
 Current implementation uses AES-256-GCM encrypted metadata on IPFS, server-side decryption gated by on-chain access verification, and wallet-gated access control.
 
