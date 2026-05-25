@@ -7,7 +7,7 @@ import { Shield, Lock, Zap, Eye, ArrowRight } from "lucide-react";
 const features = [
   {
     icon: Shield,
-    title: "FHE-Inspired Privacy",
+    title: "Privacy-First Architecture",
     description:
       "AES-256-GCM encrypted metadata stored on IPFS. Video URLs never exposed to the frontend.",
     color: "from-cyan-500 to-blue-600",
@@ -69,9 +69,9 @@ export default function HomePage() {
           transition={{ delay: 0.3 }}
           className="text-lg md:text-xl text-gray-400 max-w-2xl mb-10 leading-relaxed"
         >
-          Privacy-preserving encrypted video access platform on Arbitrum.
+          Privacy-preserving encrypted video access platform on Mezo.
           Creators monetize content with wallet-gated decryption and
-          automatic revenue caps — powered by FHE-inspired architecture.
+          automatic revenue caps — powered by privacy-first architecture.
         </motion.p>
 
         {/* CTAs */}

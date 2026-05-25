@@ -200,11 +200,11 @@ export default function CreateCampaignPage() {
         </p>
       </motion.div>
 
-      {/* FHE notice */}
+      {/* Privacy notice */}
       <div className="mb-6 p-4 rounded-xl bg-purple-500/5 border border-purple-500/20 flex gap-3">
         <Shield className="w-5 h-5 text-purple-400 shrink-0 mt-0.5" />
         <div className="text-sm text-gray-400">
-          <span className="text-purple-300 font-medium">FHE-Inspired Privacy: </span>
+          <span className="text-purple-300 font-medium">Privacy-First: </span>
           Your video URL is encrypted server-side. Only verified buyers can decrypt it.
         </div>
       </div>
