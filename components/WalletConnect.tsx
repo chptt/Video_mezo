@@ -99,7 +99,7 @@ export function useWallet() {
         await window.ethereum.request({
           method: "wallet_addEthereumChain",
           params: [{
-            chainId: "0x7B5B",
+            chainId: "0x7B7B",
             chainName: "Mezo Testnet",
             nativeCurrency: { name: "Bitcoin", symbol: "BTC", decimals: 18 },
             rpcUrls: ["https://rpc.test.mezo.org"],
@@ -114,7 +114,7 @@ export function useWallet() {
       try {
         await window.ethereum.request({
           method: "wallet_switchEthereumChain",
-          params: [{ chainId: "0x7B5B" }], // Mezo Testnet 31611
+          params: [{ chainId: "0x7b7b" }], // Mezo Testnet 31611
         });
       } catch (switchErr: unknown) {
         const code = (switchErr as { code?: number }).code;
@@ -156,18 +156,18 @@ export function useWallet() {
     if (!window.ethereum) return;
     try {
       await window.ethereum.request({
-        method: "wallet_addEthereumChain",
-        params: [{
-          chainId: "0x7B5B",
-          chainName: "Mezo Testnet",
-          nativeCurrency: { name: "Bitcoin", symbol: "BTC", decimals: 18 },
-          rpcUrls: ["https://rpc.test.mezo.org"],
+          method: "wallet_addEthereumChain",
+          params: [{
+            chainId: "0x7b7b",
+            chainName: "Mezo Testnet",
+            nativeCurrency: { name: "Bitcoin", symbol: "BTC", decimals: 18 },
+            rpcUrls: ["https://rpc.test.mezo.org"],
             blockExplorerUrls: ["https://explorer.test.mezo.org"],
-        }],
-      });
+          }],
+        });
       await window.ethereum.request({
         method: "wallet_switchEthereumChain",
-        params: [{ chainId: "0x7B5B" }],
+        params: [{ chainId: "0x7b7b" }],
       });
       toast.success("Switched to Mezo Testnet!");
     } catch {
